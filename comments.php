@@ -1,5 +1,4 @@
 <?php
-
 // DISPLAY COMMENTS IF COMMENTS ARE OPENED
 if(comments_open()) {
 	echo '<div class="comments">',

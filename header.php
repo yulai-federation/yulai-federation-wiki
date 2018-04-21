@@ -59,7 +59,7 @@ if(is_single()) {
 			}
 			?>
 
-			<div class="meta  meta-header-image clearfix">
+			<div class="meta <?php echo $headerMetaClass; ?> clearfix">
 				<div class="meta-search-form">';
 					<?php get_search_form(); ?>
 				</div>

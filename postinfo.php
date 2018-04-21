@@ -1,5 +1,4 @@
 <?php
-
 // PAGE
 if(is_page()) {
 	// pagination
