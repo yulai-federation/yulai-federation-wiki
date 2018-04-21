@@ -1,11 +1,8 @@
 <?php
 /**
  * Template Name: Wiki
- *
- * @package WordPress
- * @subpackage WikiWP
- * @since WikiWP 1.8
  */
+
 get_header();
 get_template_part('navigation');
 ?>
