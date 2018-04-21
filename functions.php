@@ -145,7 +145,7 @@ function yfWikiExcerpt($text, $excerpt) {
 }
 
 function yfWikiLoadStyles() {
-	\wp_register_style('bootstrap', \get_theme_file_uri('/css/bootstrap.min.css'), [], false, 'all');
+	\wp_register_style('bootstrap', '//static.yulaifederation.net/bootstrap/3.3.7/css/bootstrap.min.css', [], false, 'all');
 	\wp_register_style('yulai-federation-wiki', \get_theme_file_uri('/style.css'), [], false, 'all');
 	\wp_register_style('yulai-federation-wiki-navigation', \get_theme_file_uri('/css/navigation-side.css'), [], false, 'all');
 	\wp_register_style('wiki-style', \get_theme_file_uri('/css/wiki.css'), [], false, 'all');
