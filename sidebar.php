@@ -38,7 +38,7 @@
 							</div>
 
 							<div class="widget">
-								<div class="">
+								<div>
 									<?php
 									// publishing date
 									_e('Published', 'yulai-federation-wiki');
@@ -47,7 +47,7 @@
 									?>
 								</div>
 
-								<div class="">
+								<div>
 									<?php
 									_e('Author', 'yulai-federation-wiki');
 									echo ':</strong>&nbsp;';
@@ -56,7 +56,7 @@
 									?>
 								</div>
 
-								<div class="">
+								<div>
 									<?php
 									// categories
 									_e('Categories', 'yulai-federation-wiki');
