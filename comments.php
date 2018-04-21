@@ -22,10 +22,10 @@ if(comments_open()) {
 			</ul>
 
 			<div class="comment-nav">
-				<div class="alignleft">';
+				<div class="alignleft">
 					previous_comments_link();
 				</div>
-				<div class="alignright">';
+				<div class="alignright">
 					next_comments_link();
 				</div>
 			</div>
