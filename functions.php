@@ -69,6 +69,8 @@ if(!\function_exists('\WordPress\Themes\YulaiFederation\yfWikiSetup')) {
 			'default-color' => 'F0F0F0',
 			'default-image' => '',
 		]));
+
+		\add_theme_support('title-tag');
 	}
 
 	\add_action('after_setup_theme', '\\WordPress\Themes\YulaiFederationWiki\yfWikiSetup');
@@ -79,7 +81,7 @@ function yfWikiDoctypeOpengraph($openGraph) {
 	return $openGraph . ' ' . 'xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"';
 }
 
-\add_filter('language_attributes', '\\WordPress\Themes\YulaiFederationWiki\yyfWikiDoctypeOpengraph');
+\add_filter('language_attributes', '\\WordPress\Themes\YulaiFederationWiki\yfWikiDoctypeOpengraph');
 
 function yfWikiOpenGraph() {
 	if(\is_single()) {
@@ -510,3 +512,38 @@ function yfMainMenuFallback() {
 
 	echo '</ul>';
 }
+
+function yfWikiTitleSeparator($separator) {
+	$separator = '»';
+
+	return $separator;
+}
+\add_filter('document_title_separator', '\\WordPress\Themes\YulaiFederationWiki\yfWikiTitleSeparator');
+
+/**
+ * Define default page titles.
+ */
+function yfWikiWpTitle($title, $sep) {
+	global $paged, $page;
+
+	if(\is_feed()) {
+		return $title;
+	} // END if(is_feed())
+
+	// Add the site name.
+	$title .= \get_bloginfo('name');
+
+	// Add the site description for the home/front page.
+	$site_description = \get_bloginfo('description', 'display');
+	if($site_description && (\is_home() || \is_front_page())) {
+		$title = "$title $sep $site_description";
+	} // END if($site_description && (is_home() || is_front_page()))
+
+	// Add a page number if necessary.
+	if($paged >= 2 || $page >= 2) {
+		$title = $title . ' ' . $sep  . ' ' . \sprintf(\__('Page %s', 'yulai-federation-wiki'), \max($paged, $page));
+	} // END if($paged >= 2 || $page >= 2)
+
+	return $title;
+} // END function yf_wp_title($title, $sep)
+\add_filter('wp_title', '\\WordPress\Themes\YulaiFederationWiki\yfWikiWpTitle', 10, 2);
