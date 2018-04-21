@@ -1,7 +1,7 @@
 <?php
 if(comments_open()) {
 	?>
-	<div class="comments">',
+	<div class="comments">
 		<h2>
 			<?php _e('Comments', 'yulai-federation-wiki'); ?>
 		</h2>
