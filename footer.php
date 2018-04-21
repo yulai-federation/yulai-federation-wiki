@@ -1,40 +1,41 @@
-<?php
+		</div>
+		<footer class="container-fluid">
+			<div class="content clearfix">
+				<?php
+				// dynamic sidebar
+				if(is_active_sidebar('footer-left')) {
+					?>
+					<div class="col-md-4 dynamic-sidebar-footer-left">
+						<?php dynamic_sidebar('footer-left'); ?>
+					</div>
+					<?php
+				}
 
-echo '</div>', // end of .container
-// FOOTER
-'<footer class="container-fluid">',
- '<div class="content clearfix">';
-// dynamic sidebar
-if(is_active_sidebar('footer-left')) :
-	echo '<div class="col-md-4 dynamic-sidebar-footer-left">';
-	dynamic_sidebar('footer-left');
-	echo '</div>';
-endif;
+				if(is_active_sidebar('footer-mid')) {
+					?>
+					<div class="col-md-4 dynamic-sidebar-footer-middle">
+						<?php dynamic_sidebar('footer-mid'); ?>
+					</div>
+					<?php
+				}
 
-if(is_active_sidebar('footer-mid')) :
-	echo '<div class="col-md-4 dynamic-sidebar-footer-middle">';
-	dynamic_sidebar('footer-mid');
-	echo '</div>';
-endif;
+				if(is_active_sidebar('footer-right')) {
+					?>
+					<div class="col-md-4 dynamic-sidebar-footer-right">
+						<?php dynamic_sidebar('footer-right'); ?>
+					</div>
+					<?php
+				}
+				?>
 
-if(is_active_sidebar('footer-right')) :
-	echo '<div class="col-md-4 dynamic-sidebar-footer-right">';
-	dynamic_sidebar('footer-right');
-	echo '</div>';
-endif;
+				<div class="col-md-12 copyright">
+					<p>
+						<strong>&copy; <a href="<?php echo esc_url(home_url()); ?>"><?php echo get_bloginfo('name'); ?></a></strong> | powered by the <a href="https://github.com/yulai-federation/yulai-federation-wiki" target="_blank">YF Wiki Theme</a> and <a href="http://wordpress.org/" target="_blank">WordPress</a>.
+					</p>
+				</div>
+			</div>
+		</footer>
 
-// COPYRIGHT
-echo '<div class="col-md-12 copyright">',
- '<p>',
- '<strong>&copy;&nbsp;';
-echo '&nbsp;<a href="' . esc_url(home_url()) . '">' . get_bloginfo('name') . '</a></strong>',
- '&nbsp;&nbsp;|&nbsp;&nbsp;',
- 'powered by the&nbsp;',
- 'YF Wiki Theme and&nbsp;',
- '<a href="http://wordpress.org/" target="_blank">WordPress</a>.',
- '</p>',
- '</div>',
- '</div>', // End of .content
-'</footer>';
-wp_footer();
-echo '</body></html>';
+		wp_footer();
+	</body>
+</html>';
