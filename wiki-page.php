@@ -8,13 +8,13 @@ get_template_part('navigation');
 ?>
 
 <div class="pageContainer">
-	<?php
-	// get content format
-	get_template_part('content', get_post_format());
+    <?php
+    // get content format
+    get_template_part('content', get_post_format());
 
-	// comments
-	comments_template();
-	?>
+    // comments
+    comments_template();
+    ?>
 </div>
 
 <?php
