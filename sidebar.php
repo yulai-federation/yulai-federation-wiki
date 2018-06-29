@@ -12,7 +12,8 @@
         <div class="customSidebar">
             <?php
             if(is_single() || is_page_template('wiki-page.php')) {
-                while(have_posts()) : the_post();
+                while(have_posts()) {
+                    the_post();
                     // get thumbnail
                     WordPress\Themes\YulaiFederationWiki\yfWikiGetThumbnail($post);
                     ?>
@@ -73,7 +74,7 @@
                     </div>
 
                     <?php
-                endwhile;
+                }
             } else {
                 ?>
                 <div class="row sidebarContent">
@@ -92,7 +93,7 @@
         <div class="dynamicSidebar">
             <div class="row sidebarContent">
                 <div class="col-md-12">
-                    <?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar()) : endif; ?>
+                    <?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar()) {} ?>
                 </div>
             </div>
         </div>

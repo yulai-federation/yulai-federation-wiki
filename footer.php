@@ -3,26 +3,26 @@
             <div class="content clearfix">
                 <?php
                 // dynamic sidebar
-                if(is_active_sidebar('footer-left')) {
+                if(is_active_sidebar('sidebar-footer-left')) {
                     ?>
                     <div class="col-md-4 dynamic-sidebar-footer-left">
-                        <?php dynamic_sidebar('footer-left'); ?>
+                        <?php dynamic_sidebar('sidebar-footer-left'); ?>
                     </div>
                     <?php
                 }
 
-                if(is_active_sidebar('footer-mid')) {
+                if(is_active_sidebar('sidebar-footer-mid')) {
                     ?>
                     <div class="col-md-4 dynamic-sidebar-footer-middle">
-                        <?php dynamic_sidebar('footer-mid'); ?>
+                        <?php dynamic_sidebar('sidebar-footer-mid'); ?>
                     </div>
                     <?php
                 }
 
-                if(is_active_sidebar('footer-right')) {
+                if(is_active_sidebar('sidebar-footer-right')) {
                     ?>
                     <div class="col-md-4 dynamic-sidebar-footer-right">
-                        <?php dynamic_sidebar('footer-right'); ?>
+                        <?php dynamic_sidebar('sidebar-footer-right'); ?>
                     </div>
                     <?php
                 }

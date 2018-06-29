@@ -15,17 +15,17 @@ get_template_part('navigation');
         </header>
     </section>
 
-    <section class="entryTypePostExcerptContainer">
-        <?php
-        // query for post order
-        $posts = query_posts($query_string . '&orderby=name&order=asc&posts_per_page=-1');
-
-        if(have_posts()) : while(have_posts()) : the_post();
-                // get post excerpt
-                WordPress\Themes\YulaiFederationWiki\yfWikiGetPostExcerpt($post);
-            endwhile;
+    <?php
+    if(have_posts()) {
+        while(have_posts()) {
+            the_post();
             ?>
-        </section>
+            <section class="entryTypePostExcerptContainer">
+                <?php WordPress\Themes\YulaiFederationWiki\yfWikiGetPostExcerpt($post); ?>
+            </section>
+            <?php
+        }
+        ?>
 
         <section class="entryTypePostExcerptMeta">
             <?php
@@ -34,10 +34,11 @@ get_template_part('navigation');
             previous_posts_link('<span class="next-posts-link">&laquo; ' . __('Newer Entries', 'yulai-federation-wiki') . '</span>');
             next_posts_link('<span class="previous-posts-link">' . __('Older Entries', 'yulai-federation-wiki') . ' &raquo;</span>');
             echo '</div>'; // End of .posts-pagination
-        // If no posts were found
-        endif;
-        ?>
-    </section>
+            ?>
+        </section>
+        <?php
+    }
+    ?>
 </div>
 
 <?php

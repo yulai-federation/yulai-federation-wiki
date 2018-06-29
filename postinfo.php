@@ -39,8 +39,6 @@ if(is_page()) {
                   </div>';
     }
 
-
-
     // pagination
     wp_link_pages('before=<p class="pagination"><span class="pagination-text">' . __('Sections', 'yulai-federation-wiki') . '</span>&after=</p>&next_or_number=number&pagelink=<span class="pagination-item">%</span>');
 
