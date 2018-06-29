@@ -102,7 +102,7 @@ if(!\function_exists('\WordPress\Themes\YulaiFederation\yfWikiThemeSupport')) {
 }
 
 /**
- * Thimnail definitions
+ * Thumbnail definitions
  */
 if(!\function_exists('\WordPress\Themes\YulaiFederation\yfWikiThemeThumbnails')) {
     function yfWikiThemeThumbnails() {
