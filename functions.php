@@ -214,18 +214,92 @@ function yfWikiExcerpt($text, $excerpt) {
  * Load CSS styles
  */
 function yfWikiLoadStyles() {
-    \wp_register_style('bootstrap', '//static.yulaifederation.net/bootstrap/3.3.7/css/bootstrap.min.css', [], false, 'all');
-    \wp_register_style('yulai-federation-wiki', \get_theme_file_uri('/style.css'), [], false, 'all');
-    \wp_register_style('yulai-federation-wiki-navigation', \get_theme_file_uri('/css/navigation-side.css'), [], false, 'all');
-    \wp_register_style('wiki-style', \get_theme_file_uri('/css/wiki.css'), [], false, 'all');
+    $enqueue_style = yfWikiGetStyles();
 
-    \wp_enqueue_style('bootstrap');
-    \wp_enqueue_style('yulai-federation-wiki');
-    \wp_enqueue_style('yulai-federation-wiki-navigation');
-    \wp_enqueue_style('wiki-style');
+    /**
+     * Loop through the CSS array and load the styles
+     */
+    foreach($enqueue_style as $style) {
+        if(\defined('\WP_DEBUG') && \WP_DEBUG === true) {
+            // for external styles we might not have a development source
+            if(isset($style['source-development'])) {
+                $style['source'] = $style['source-development'];
+            }
+        }
+
+        \wp_enqueue_style($style['identifier'], $style['source'], $style['dependencies'], $style['version'], $style['media']);
+
+        // conditional styles
+        if(!empty($style['condition'])) {
+            \wp_style_add_data($style['identifier'], $style['condition']['conditionKey'], $style['condition']['conditionValue']);
+        }
+    }
 }
 
 \add_action('wp_enqueue_scripts', '\\WordPress\Themes\YulaiFederationWiki\yfWikiLoadStyles');
+
+function yfWikiGetStyles() {
+    $styles = [
+        'Bootstrap' => [
+            'identifier' => 'bootstrap',
+            'source' => '//static.yulaifederation.net/bootstrap/3.3.7/css/bootstrap.min.css',
+            'source-development' => '//static.yulaifederation.net/bootstrap/3.3.7/css/bootstrap.min.css',
+            'dependencies' => [],
+            'version' => false,
+            'media' => 'all'
+        ],
+        'Yulai Federation Wiki Main' => [
+            'identifier' => 'yulai-federation-wiki-main',
+            'source' => \get_theme_file_uri('/style.min.css'),
+            'source-development' => \get_theme_file_uri('/style.css'),
+            'dependencies' => [],
+            'version' => false,
+            'media' => 'all'
+        ],
+        'Yulai Federation Wiki Side Navigation' => [
+            'identifier' => 'yulai-federation-wiki-side-navigation',
+            'source' => \get_theme_file_uri('/css/navigation-side.min.css'),
+            'source-development' => \get_theme_file_uri('/css/navigation-side.css'),
+            'dependencies' => [
+                'yulai-federation-wiki-main'
+            ],
+            'version' => false,
+            'media' => 'all'
+        ],
+        'Yulai Federation Wiki Fonts' => [
+            'identifier' => 'yulai-federation-wiki-fonts',
+            'source' => \get_theme_file_uri('/css/fonts.min.css'),
+            'source-development' => \get_theme_file_uri('/css/fonts.css'),
+            'dependencies' => [
+                'yulai-federation-wiki-side-navigation'
+            ],
+            'version' => false,
+            'media' => 'all'
+        ],
+        'Yulai Federation Wiki Media' => [
+            'identifier' => 'yulai-federation-wiki-media',
+            'source' => \get_theme_file_uri('/css/media.min.css'),
+            'source-development' => \get_theme_file_uri('/css/media.css'),
+            'dependencies' => [
+                'yulai-federation-wiki-fonts'
+            ],
+            'version' => false,
+            'media' => 'all'
+        ],
+        'Yulai Federation Wiki Overrides' => [
+            'identifier' => 'yulai-federation-wiki-overrides',
+            'source' => \get_theme_file_uri('/css/wiki.min.css'),
+            'source-development' => \get_theme_file_uri('/css/wiki.css'),
+            'dependencies' => [
+                'yulai-federation-wiki-media'
+            ],
+            'version' => false,
+            'media' => 'all'
+        ]
+    ];
+
+    return $styles;
+}
 
 /**
  * Load JavaScripts
