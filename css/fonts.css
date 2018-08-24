@@ -2,6 +2,7 @@
 .page-title,
 .entryTitle {
     margin-top: 0;
+    border-bottom: 1px solid #bbbbbb;
 }
 
 h1 {
@@ -21,16 +22,17 @@ h6 {
 }
 
 h2 {
-    font-size: 1.6em;
+    font-size: 1.5em;
 }
 
 h3 {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
 h4 {
-    font-size: 1.3em;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 h5 {
@@ -41,6 +43,7 @@ h5 {
 h6 {
     font-size: 1em;
     font-style: italic;
+    font-weight: bold;
 }
 
 p {
